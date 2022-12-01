@@ -41,13 +41,12 @@ impl<'a> Rom<'a> {
             return None;
         }
 
-        Some({
-            let i = self.0.len() - 4;
-            (self.0[i] as usize) |
-            (self.0[i + 1] as usize) << 8 |
-            (self.0[i + 2] as usize) << 16
-            //TODO: Should we ignore highest byte?
-        })
+        // The location is stored as a negative offset from the end of flash.
+        let i = self.0.len() - 4;
+        let offset = i32::from_le_bytes([self.0[i], self.0[i + 1], self.0[i + 2], self.0[i + 3]]) as isize;
+        let header_pos = (self.0.len() as isize + offset) as usize;
+
+        Some(header_pos)
     }
 
     pub fn header(&self) -> Option<&Header> {
