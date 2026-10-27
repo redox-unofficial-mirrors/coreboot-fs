@@ -1,7 +1,6 @@
 #![no_std]
 
 use core::mem;
-use plain;
 
 pub use self::big_endian::Be32;
 mod big_endian;

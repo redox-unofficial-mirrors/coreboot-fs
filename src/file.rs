@@ -3,7 +3,7 @@ use core::{mem, slice};
 use plain::Plain;
 
 #[derive(Clone, Copy, Debug)]
-#[repr(packed)]
+#[repr(C, packed)]
 pub struct File {
     pub magic: [u8; 8],
     pub len: Be32,

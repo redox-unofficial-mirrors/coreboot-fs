@@ -2,7 +2,7 @@ use crate::Be32;
 use plain::Plain;
 
 #[derive(Clone, Copy, Debug)]
-#[repr(packed)]
+#[repr(C, packed)]
 pub struct Header {
     pub magic: [u8; 4],
     pub version: Be32,

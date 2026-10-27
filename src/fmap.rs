@@ -1,7 +1,7 @@
 use plain::Plain;
 
 #[derive(Clone, Copy, Debug)]
-#[repr(packed)]
+#[repr(C, packed)]
 pub struct FmapArea {
     pub offset: u32,
     pub size: u32,
@@ -10,7 +10,7 @@ pub struct FmapArea {
 }
 
 #[derive(Clone, Copy, Debug)]
-#[repr(packed)]
+#[repr(C, packed)]
 pub struct Fmap {
     pub signature: [u8; 8],
     pub ver_major: u8,
